@@ -5,7 +5,7 @@ A reusable Terraform module for deploying containerized applications to **Google
 
 ---
 
-## 🚀 Default Setup (Simple & Free)
+## Default Setup (Simple & Free)
 By default, this module is optimized for the **GCP Free Tier** and low-traffic projects.
 
 - **Direct Public Access**: No complex Load Balancer required (Service URL provided).
@@ -14,14 +14,14 @@ By default, this module is optimized for the **GCP Free Tier** and low-traffic p
 - **Cost Protection**: `max_instances = 1` prevents unexpected billing spikes.
 - **Estimated Cost**: **$0/month** for low-traffic portfolio projects.
 
-### 📐 Simple Architecture
+### Simple Architecture
 ```text
 Internet  ──▶  Cloud Run Service (HTTPS)
 ```
 
 ---
 
-## 🛡️ Production Setup (Optional)
+## Production Setup (Optional)
 For enterprise-grade applications, this module supports hardened security patterns.
 
 - **Restricted Ingress**: Set `ingress = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"`.
@@ -30,7 +30,7 @@ For enterprise-grade applications, this module supports hardened security patter
 - **Enterprise Auth**: Enable **Identity-Aware Proxy (IAP)** for internal employee access.
 - **Estimated Cost**: **~$20-25/month** (base cost for Load Balancer + Cloud Armor).
 
-### 📐 Production Architecture
+### Production Architecture
 ```text
 Internet  ──▶  Cloud Load Balancer  ──▶  Cloud Armor  ──▶  Cloud Run
                                           (WAF)
@@ -38,7 +38,7 @@ Internet  ──▶  Cloud Load Balancer  ──▶  Cloud Armor  ──▶  Clo
 
 ---
 
-## 💻 Usage Example
+## Usage Example
 Minimal example for a simple portfolio application:
 
 ```hcl
@@ -57,7 +57,7 @@ module "portfolio_app" {
 
 ---
 
-## ⚙️ Input Variables
+## Input Variables
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -78,7 +78,7 @@ module "portfolio_app" {
 
 ---
 
-## 📤 Outputs
+## Outputs
 
 | Name | Description |
 |------|-------------|
@@ -87,7 +87,7 @@ module "portfolio_app" {
 
 ---
 
-## 🔒 Security Considerations
+## Security Considerations
 
 | Feature | Direct Public Access | Load Balancer + Cloud Armor |
 |---------|-----------------------|-----------------------------|
@@ -98,7 +98,7 @@ module "portfolio_app" {
 
 ---
 
-## 🛠️ Requirements
+## Requirements
 
 ### Software
 - **Terraform**: `>= 1.0`
