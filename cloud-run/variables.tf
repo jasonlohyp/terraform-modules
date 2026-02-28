@@ -78,3 +78,9 @@ variable "enable_iap" {
   type        = bool
   default     = false
 }
+
+variable "secret_env_vars" {
+  description = "Map of environment variable names to Secret Manager secret IDs. These are mounted securely from GCP Secret Manager."
+  type        = map(string)
+  default     = {}
+}

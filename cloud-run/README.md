@@ -43,15 +43,21 @@ Minimal example for a simple portfolio application:
 
 ```hcl
 module "portfolio_app" {
-  source = "./cloud-run"
+  source = "github.com/jasonlohyp/terraform-modules//cloud-run"
 
-  project_id      = "my-gcp-project"
-  app_name        = "my-portfolio"
-  container_image = "gcr.io/my-project/portfolio-ui:latest"
-  
-  # Scaling optimized for free tier
-  max_instances = 1
-  min_instances = 0
+  project_id      = var.project_id
+  app_name        = "my-app"
+  container_image = var.container_image
+
+  # Plain env vars
+  env_vars = {
+    ENV = "production"
+  }
+
+  # Secrets from Secret Manager
+  secret_env_vars = {
+    API_KEY = "MY_SECRET_NAME"
+  }
 }
 ```
 
@@ -66,6 +72,7 @@ module "portfolio_app" {
 | `app_name` | Name of the Cloud Run service. | `string` | n/a | **Yes** |
 | `container_image` | Full container image URL. | `string` | n/a | **Yes** |
 | `env_vars` | Map of environment variables. | `map(string)` | `{}` | No |
+| `secret_env_vars` | Map of environment variable names to Secret Manager secret IDs. | `map(string)` | `{}` | No |
 | `max_instances` | Max instances for scaling. | `number` | `1` | No |
 | `min_instances` | Min instances (0 = scale to zero). | `number` | `0` | No |
 | `memory` | Container memory (e.g., "512Mi"). | `string` | `"512Mi"` | No |
@@ -108,3 +115,4 @@ module "portfolio_app" {
 The module automatically attempts to enable:
 - `run.googleapis.com`
 - `artifactregistry.googleapis.com`
+- `secretmanager.googleapis.com`

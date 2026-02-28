@@ -13,6 +13,13 @@ resource "google_project_service" "artifact_registry_api" {
   disable_on_destroy = false
 }
 
+resource "google_project_service" "secretmanager_api" {
+  project = var.project_id
+  service = "secretmanager.googleapis.com"
+
+  disable_on_destroy = false
+}
+
 # Cloud Run V2 Service
 resource "google_cloud_run_v2_service" "default" {
   name     = var.app_name
@@ -43,6 +50,19 @@ resource "google_cloud_run_v2_service" "default" {
           value = env.value
         }
       }
+
+      dynamic "env" {
+        for_each = var.secret_env_vars
+        content {
+          name = env.key
+          value_source {
+            secret_key_ref {
+              secret  = env.value
+              version = "latest"
+            }
+          }
+        }
+      }
     }
 
     max_instance_request_concurrency = var.concurrency
@@ -52,7 +72,8 @@ resource "google_cloud_run_v2_service" "default" {
   # Ensure APIs are enabled before creating the service
   depends_on = [
     google_project_service.run_api,
-    google_project_service.artifact_registry_api
+    google_project_service.artifact_registry_api,
+    google_project_service.secretmanager_api
   ]
 }
 
