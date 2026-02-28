@@ -28,7 +28,11 @@ module "cloud_run" {
   region          = "europe-west1"
 
   env_vars = {
-    API_KEY = var.api_key
+    ENV = "production"
+  }
+
+  secret_env_vars = {
+    API_KEY = "MY_SECRET_NAME"
   }
 }
 
