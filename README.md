@@ -66,7 +66,7 @@ terraform-modules/
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 - [Terraform](https://developer.hashicorp.com/terraform/install) >= 1.0
 - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) (for authentication)
@@ -79,7 +79,7 @@ gcloud auth application-default login
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [x] Cloud Run module
 - [ ] Cloud Storage bucket module
@@ -89,7 +89,7 @@ gcloud auth application-default login
 
 ---
 
-## 📚 Projects Using These Modules
+## Projects Using These Modules
 
 | Project | Module Used | Description |
 |---|---|---|
