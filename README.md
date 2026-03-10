@@ -1,6 +1,6 @@
 # Terraform Modules
 
-A collection of reusable Terraform modules for Google Cloud Platform (GCP). Built to eliminate infrastructure duplication across projects — define once, reuse everywhere.
+A collection of reusable Terraform modules for Google Cloud Platform (GCP). Built to eliminate infrastructure duplication across projects. Define once, reuse everywhere.
 
 > Inspired by platform engineering principles from central GCP governance work. Any project can consume these modules without repeating infrastructure code.
 
@@ -87,9 +87,6 @@ gcloud auth application-default login
 
 - [x] Cloud Run module
 - [ ] Cloud Storage bucket module
-- [ ] Artifact Registry module
-- [ ] Cloud SQL module
-- [ ] GitHub Actions CI/CD pipeline for auto-deployment
 
 ---
 
@@ -98,4 +95,3 @@ gcloud auth application-default login
 | Project | Module Used | Description |
 |---|---|---|
 | [swedish-tutor-agent](https://github.com/jasonlohyp/swedish-tutor-agent) | cloud-run | AI-powered Swedish language tutor |
-
